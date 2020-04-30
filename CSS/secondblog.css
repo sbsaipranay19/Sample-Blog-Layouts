@@ -1,3 +1,5 @@
+@import "common.css"; 
+
 body {
     margin: 0;
     background: #e1f6f6;
@@ -63,41 +65,6 @@ body {
         flex-direction: column;
         padding: 0 30px;
     }
-}
-
-/*Nav Bar*/
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #e1f6f6;
-}
-
-.nav-right {
-    float: right;
-}
-
-li {
-    float: left;
-}
-
-li a {
-    display: block;
-    color: #333;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    border-radius: 7px;
-}
-
-li a:hover {
-    background-color: #77d8d8;
-}
-
-.active {
-    background-color: #baeae6;
-    border-radius: 5px;
 }
 
 /*Container*/

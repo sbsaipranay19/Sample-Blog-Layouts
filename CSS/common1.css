@@ -1,0 +1,13 @@
+.footer {
+ text-align: center;
+ background: #e1f6f6;
+ color: #333;
+ height: 50px;
+ font-family: 'Montserrat', sans-serif;
+ margin: 10px 20px 20px;
+ text-decoration: none;
+}
+
+.footer:hover {
+ color: #11999E;
+}
