@@ -15,7 +15,7 @@ body {
     }
 
     .contain {
-        margin: 850px 0 0 !important;
+        margin: 1350px 0 0 !important;
         display: flex;
         flex-wrap: wrap;
         flex-direction: row !important;
@@ -24,9 +24,17 @@ body {
     }
 
     .linkdiv {
-        width: 100%;
+        display: flex !important;
+        flex-direction: column !important;
     }
 
+    .sidebar{
+        margin: 350px 0 0;
+    }
+
+    .title{
+        margin: 60px 0 !important;
+    }
 }
 
 /* Medium Screens */
