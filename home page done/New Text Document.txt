@@ -1,0 +1,18 @@
+/* Anything smaller than first breakpoint 600px */
+.container {
+  // rules for small screen
+}
+
+/* Medium Screens */
+@media (min-width: 600px) and (max-width:900px) {
+  .container {
+    // rules for medium-sized screen
+  }
+}
+
+/* Large Screens */
+@media (min-width:901px) {
+  .container {
+    // rules for large screen
+  }
+}

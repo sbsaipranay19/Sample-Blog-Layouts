@@ -1,0 +1,101 @@
+/**
+ * 
+ * Manipulating the DOM exercise.
+ * Exercise programmatically builds navigation,
+ * scrolls to anchors from navigation,
+ * and highlights section in viewport upon scrolling.
+ * 
+ * Dependencies: None
+ * 
+ * JS Version: ES2015/ES6
+ * 
+ * JS Standard: ESlint
+ * 
+*/
+
+
+/**
+ * Define Global Variables
+ * 
+*/
+const navbar = document.getElementById('navbar__list');
+const navElements = document.querySelectorAll('section');
+/**
+ * End Global Variables
+ * Start Helper Functions
+ * 
+*/
+
+// build the nav
+navElements.forEach(el => {
+ const navlistElement = `<li class='menu__link ${el.className}' 
+ data-link=${el.id}><a href="#${el.id}">${el.dataset.nav}</li>`
+ navbar.insertAdjacentHTML('beforeend', navlistElement)
+})
+
+// Scroll to anchor ID using scrollTO event
+function scrollTo() {
+ navbar.addEventListener('click', function (event) {
+     const sectionSelected = document.querySelector('#' + event.target.dataset.nav)
+     sectionSelected.scrollIntoView();
+ });
+};
+
+//Pop Out For h1 tag
+//Once the h1 is clicked this function is called and popout is visible
+const heading = document.getElementsByClassName(".popup");
+heading.addEventListener('click', function() {
+ console.log('heading clicked');
+ heading.classList.classList.add("show");
+});
+
+//Scroll To Top Button
+//Selecting the button
+mybutton = document.getElementById("myBtn");
+//Once the page is scrolled the below function is called
+window.onscroll = function() {scrollFunction()};
+//Oncethe page is scrolled 120 px downward the display of button changed from none to block
+function scrollFunction() {
+  if (document.body.scrollTop > 120 || document.documentElement.scrollTop > 120) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+//Once the button is pressed the page scrolls back to back
+function topFunction() {
+  document.documentElement.scrollTop = 0;
+}
+
+
+//callback function to be run whenever a threshold is called. Threshold is declared in the next constructor
+const callback = enteries => {
+ enteries.forEach(entry => {
+  // Each entry describes an intersection change for one observed
+   const navListElement = document.querySelector(
+     `.menu__link[data-link='${entry.target.id}']`,
+   )
+   const section = document.getElementById(entry.target.id)
+   if (entry && entry.isIntersecting) {
+     navListElement.classList.add('active')
+     section.classList.add('active')
+   } else if
+      (navListElement.classList.contains('active')) {
+       navListElement.classList.remove('active')
+   }
+ })
+}
+
+// Constructor to be called by Intersection Observer, Refered MDN
+const options = {
+ root: document.querySelector('#scrollArea'), //element used for viewport
+ rootMargin: '0px', //shrinks or grows the sections, since it is set to 0-no change
+ threshold: 0.5, //1 represents when 100% of the target is visible. I have chose .5 that is when 50% of the section is visible the active section changes
+}
+
+// Intersection Observer takes 2 parameters the function activeElement and options and sets the active element if needed
+const observer = new IntersectionObserver(callback, options) //sending both callback function and options constructor
+navElements.forEach(el => {//for each loop to check every section
+ observer.observe(document.getElementById(el.id)) //observes the given section is 50% visible and if its true it calls callback function
+})
